@@ -4,13 +4,13 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**RAG-WM** enhances Joint-Embedding Predictive Architecture World Models (**JEPA-WM**) by integrating non-parametric episodic memory retrieval with parametric Transformer dynamics. By grounding long-horizon latent unrolls in observed transitions, RAG-WM significantly curtails compounding compounding rollout drift and improves prediction fidelity across complex visual navigation and robotic manipulation tasks.
+**RAG-WM** enhances Joint-Embedding Predictive Architecture World Models (**JEPA-WM**) by integrating non-parametric episodic memory retrieval with parametric Transformer dynamics. By grounding long-horizon latent unrolls in observed transitions, RAG-WM significantly curtails compounding rollout drift and improves prediction fidelity across complex visual navigation and robotic manipulation tasks.
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
-- **Dense Episodic Memory Bank**: Indexes observed transitions $(s_t, a_t \to s_{t+1}, \Delta s_t)$ in self-supervised DINOv2 latent space.
+- **Dense Episodic Memory Bank**: Indexes observed transitions $(s_t, a_t \rightarrow s_{t+1}, \Delta s_t)$ in self-supervised DINOv2 latent space.
 - **GPU-Accelerated Vector Retrieval**: Sub-millisecond cosine similarity search with temperature-scaled softmax multi-neighbor weighting.
 - **Adaptive Confidence Gating**: Dynamically adjusts the blending parameter $\lambda_t$ according to retrieval similarity confidence to avoid negative interference from out-of-distribution transitions.
 - **Horizon Decay Schedules**: Smoothly blends from memory-grounded rollouts to neural parametric rollouts over long horizons.
@@ -19,7 +19,7 @@
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```text
 rag-wm/
@@ -44,7 +44,7 @@ rag-wm/
 
 ---
 
-## 🛠️ Installation & Setup
+## Installation & Setup
 
 1. **Clone the repository**:
    ```bash
@@ -63,7 +63,7 @@ rag-wm/
 
 ---
 
-## 📊 Running Benchmarks
+## Running Benchmarks
 
 Run standard evaluations comparing **JEPA-WM Baseline** vs. **Fixed-blend RAG-WM** vs. **Adaptive-gated RAG-WM**:
 
@@ -84,19 +84,19 @@ python rag_wm/benchmarks/run_benchmark.py --env pointmaze --horizon 20 --top-k 3
 ```
 
 All benchmark runs generate:
-- `rag_wm/benchmarks/results/<env>_benchmark_data.json` (step-by-step MSE, cosine similarities, paired $t$-tests, Cohen's $d$)
-- `rag_wm/benchmarks/results/<env>_benchmark_figure.png` (2×2 overview figure)
+- `rag_wm/benchmarks/results/<env>_benchmark_data.json` (step-by-step MSE, cosine similarities, paired t-tests, Cohen's d)
+- `rag_wm/benchmarks/results/<env>_benchmark_figure.png` (2x2 overview figure)
 
 ---
 
-## 🔬 Running Systematic Ablation Studies
+## Systematic Ablation Studies
 
 The ablation suite in `rag_wm/ablation/run_ablation.py` systematically evaluates:
-1. **Gating Mechanisms & Control Baselines** (Baseline, Static Momentum Residual, Fixed $\lambda$, Horizon Decay, Adaptive Gating, Full RAG-WM)
-2. **Retrieval Neighborhood Size $K$** ($K \in \{0, 1, 2, 3, 5, 8, 10\}$)
-3. **Interpolation Weight $\lambda$** ($\lambda \in [0.0, 1.0]$)
-4. **Memory Bank Capacity Scaling** ($\{10\%, 25\%, 50\%, 75\%, 100\%\}$ transitions)
-5. **Softmax Temperature $\tau$** ($\tau \in [0.02, 1.00]$)
+1. **Gating Mechanisms & Control Baselines**: Baseline (Pure JEPA-WM), Static Momentum Residual, Fixed $\lambda$, Horizon Decay, Adaptive Gating, and Full RAG-WM.
+2. **Retrieval Neighborhood Size ($K$)**: Evaluates $K \in \{0, 1, 2, 3, 5, 8, 10\}$.
+3. **Interpolation Weight ($\lambda$)**: Evaluates $\lambda \in [0.0, 1.0]$.
+4. **Memory Bank Capacity Scaling**: Evaluates buffer capacity scaling across 10%, 25%, 50%, 75%, and 100% indexed transitions.
+5. **Softmax Temperature ($\tau$)**: Evaluates retrieval temperature across $\tau \in [0.02, 1.00]$.
 
 ### Usage:
 
@@ -127,31 +127,16 @@ Results are automatically saved to each experiment's dedicated subfolder (`rag_w
 
 ---
 
-## 📑 Environments
+## Environments
 
 | Environment | Observation Type | State Space | Action Space | Task Description |
 |:---|:---:|:---:|:---:|:---|
-| **PointMaze** | $224 \times 224$ RGB | 4D (Pos, Vel) | 2D Discrete | Long-horizon navigation around obstacles |
-| **Push-T** | $224 \times 224$ RGB | 4D (Pos, Vel) | 2D Continuous | Planar T-block manipulation to target zone |
-| **MetaWorld** | $256 \times 256$ RGB | 39D Arm State | 4D Continuous | Multi-task articulated robotic manipulation |
+| **PointMaze** | 224 x 224 RGB | 4D (Pos, Vel) | 2D Discrete | Long-horizon navigation around obstacles |
+| **Push-T** | 224 x 224 RGB | 4D (Pos, Vel) | 2D Continuous | Planar T-block manipulation to target zone |
+| **MetaWorld** | 256 x 256 RGB | 39D Arm State | 4D Continuous | Multi-task articulated robotic manipulation |
 
 ---
 
-## 📜 Citation
-
-If you use this codebase in your research, please cite:
-
-```bibtex
-@article{jangra2026ragwm,
-  title={RAG-WM: Retrieval-Augmented Joint-Embedding World Models for Long-Horizon Robot Manipulation and Navigation},
-  author={Jangra, Hariom and collaborators},
-  journal={arXiv preprint},
-  year={2026}
-}
-```
-
----
-
-## 📄 License
+## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.

@@ -12,4 +12,4 @@ This directory contains the core implementation of **Retrieval-Augmented Joint-E
   - [`metaworld/`](ablation/metaworld/): MetaWorld ablation results.
   - [`pusht/`](ablation/pusht/): Push-T continuous manipulation ablation results.
 
-For full usage instructions, benchmarks, and citations, refer to the root [README.md](../README.md).
+For full usage instructions, benchmarks, and experimental details, refer to the root [README.md](../README.md).
