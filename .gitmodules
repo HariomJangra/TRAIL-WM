@@ -1,0 +1,3 @@
+[submodule "jepa-wms"]
+	path = jepa-wms
+	url = https://github.com/facebookresearch/jepa-wms.git

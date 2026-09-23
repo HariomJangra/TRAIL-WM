@@ -1,0 +1,57 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Data & Large Datasets
+data/
+**/data/
+*.parquet
+*.h5
+*.hdf5
+*.npz
+*.npy
+*.pth
+*.pt
+*.tar
+*.pth.tar
+*.mp4
+*.avi
+*.bin
+
+# Model Checkpoints & Weights
+models/
+**/models/
+*.ckpt
+*.safetensors
+*.onnx
+
+# Paper drafts and assets
+paper/
+**/paper/
+
+# Caches & Temporary Files
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Environments & IDEs
+.env
+.venv/
+venv/
+env/
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs & Experiment Tracking
+*.log
+logs/
+wandb/
