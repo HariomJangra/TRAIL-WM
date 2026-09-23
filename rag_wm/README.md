@@ -1,6 +1,6 @@
-# RAG-WM Package Overview
+# TRAIL-WM Package Overview
 
-This directory contains the core implementation of **Retrieval-Augmented Joint-Embedding World Models (RAG-WM)**.
+This directory contains the core implementation of **TRAIL-WM** (**T**ransition **R**etrieval and **A**daptive **I**ntegration for **L**atent **W**orld **M**odels).
 
 ## Package Layout
 
@@ -11,5 +11,6 @@ This directory contains the core implementation of **Retrieval-Augmented Joint-E
   - [`pointmaze/`](ablation/pointmaze/): Ablation figures, JSON data, and markdown summaries.
   - [`metaworld/`](ablation/metaworld/): MetaWorld ablation results.
   - [`pusht/`](ablation/pusht/): Push-T continuous manipulation ablation results.
+- **[`paper/`](paper/)**: Complete TMLR submission paper (`main.tex`), standalone publication figures (300 DPI), style files, and bibliography.
 
 For full usage instructions, benchmarks, and experimental details, refer to the root [README.md](../README.md).

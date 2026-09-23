@@ -11,7 +11,7 @@
 | **Fixed Blend ($\lambda=0.30$)** | 3.6926 | 4.2500 | +4.82% | 0.804 | 1.47e-03 | ** |
 | **Horizon Decay ($\gamma=0.95$)** | 3.7361 | 4.2873 | +3.69% | 0.605 | 1.18e-02 | * |
 | **Adaptive Confidence Gating** | 3.8535 | 4.2699 | +0.67% | 0.202 | 3.65e-01 | n.s. |
-| **Full RAG-WM (Adaptive + Decay)** | 3.8535 | 4.2699 | +0.67% | 0.202 | 3.65e-01 | n.s. |
+| **Full TRAIL-WM (Adaptive + Decay)** | 3.8535 | 4.2699 | +0.67% | 0.202 | 3.65e-01 | n.s. |
 
 ## 2. Retrieval Neighborhood Size (K) Sensitivity
 | Neighborhood Size K | Mean Horizon MSE | Final Step MSE |

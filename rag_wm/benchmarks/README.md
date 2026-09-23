@@ -1,13 +1,13 @@
-# RAGWM — Retrieval-Augmented JEPA World Model Benchmark Suite
+# TRAIL-WM — JEPA World Model Benchmark Suite
 
-Clean, reviewer-ready benchmark code for the RAG-WM paper.
+Clean, reviewer-ready benchmark code for the TRAIL-WM paper (*Transition Retrieval and Adaptive Integration for JEPA-Based World Models*).
 
 ---
 
 ## File Structure
 
 ```
-RAGWM/
+benchmarks/
   benchmark_base.py   ← Abstract base: shared pipeline + figures + stats
   metaworld_env.py    ← MetaWorld adapter
   pointmaze_env.py    ← PointMaze adapter
@@ -22,20 +22,20 @@ RAGWM/
 
 ```bash
 # from the repo root
-python RAGWM/run_benchmark.py --env metaworld
-python RAGWM/run_benchmark.py --env pointmaze
-python RAGWM/run_benchmark.py --env pusht
+python rag_wm/benchmarks/run_benchmark.py --env metaworld
+python rag_wm/benchmarks/run_benchmark.py --env pointmaze
+python rag_wm/benchmarks/run_benchmark.py --env pusht
 
 # optional overrides
-python RAGWM/run_benchmark.py --env pusht --horizon 20 --top-k 3 --lam 0.30
+python rag_wm/benchmarks/run_benchmark.py --env pusht --horizon 20 --top-k 3 --lam 0.30
 ```
 
 Or run each environment directly:
 
 ```bash
-python RAGWM/metaworld_env.py
-python RAGWM/pointmaze_env.py
-python RAGWM/pusht_env.py
+python rag_wm/benchmarks/metaworld_env.py
+python rag_wm/benchmarks/pointmaze_env.py
+python rag_wm/benchmarks/pusht_env.py
 ```
 
 ---
@@ -63,7 +63,7 @@ base class (Template Method pattern). Each environment subclass implements only:
 
 The following are **shared** and never duplicated:
 
-- `evaluate_episode()` — baseline + fixed-RAG + adaptive-RAG rollouts
+- `evaluate_episode()` — baseline + fixed-TRAIL + adaptive-TRAIL rollouts
 - `aggregate_stats()` — mean/std/SEM, paired t-test, Cohen's d
 - `print_table()` — console output
 - `save_json()` — structured JSON
@@ -76,5 +76,5 @@ The following are **shared** and never duplicated:
 | Method | Description |
 |--------|-------------|
 | **JEPA-WM Baseline** | Standard parametric rollout, no retrieval |
-| **RAG-WM (fixed λ)** | Fixed blend weight λ=0.30, K=3 neighbours |
-| **RAG-WM (adaptive gate)** | Similarity-gated λ with horizon decay |
+| **TRAIL-WM (fixed λ)** | Fixed blend weight λ=0.30, K=3 neighbours |
+| **TRAIL-WM (adaptive gate)** | Similarity-gated λ with horizon decay |
